@@ -1,11 +1,20 @@
+import os
 import sys
 
 from django.conf import settings
 
+# get DEBUG from environment, default to on
+DEBUG = os.environ.get('DEBUG', 'on') == 'on'
+# default to random num if not set
+SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(32))
+# default to localhost if none set
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+
 # Need to set up these settings before making any additional imports from Django
 settings.configure(
-    DEBUG=True,
-    SECRET_KEY='thisisthesecretkey',
+    DEBUG=DEBUG,
+    SECRET_KEY=SECRET_KEY,
+    ALLOWED_HOSTS=ALLOWED_HOSTS,
     ROOT_URLCONF=__name__,
     MIDDLEWARE_CLASSES=(
         'django.middleware.common.CommonMiddleware',
