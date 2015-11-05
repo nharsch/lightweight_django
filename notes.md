@@ -19,3 +19,9 @@
     * url cpature groups:
         * captured pattern groups are passed to the view as positional args
         * named groups are passed as keyword args
+
+* Caching
+    * server side or client side 
+    * etag decorator 
+        * will generate content on first request
+        * otherwise sends a 304 Not Modified response
