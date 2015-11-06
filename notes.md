@@ -22,8 +22,8 @@
 ###Placeholder image server
 
 * url cpature groups:
-* captured pattern groups are passed to the view as positional args
-    * named groups are passed as keyword args
+    * captured pattern groups are passed to the view as positional args
+        * named groups are passed as keyword args
 
 * Caching
     * server side or client side 
