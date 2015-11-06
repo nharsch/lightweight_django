@@ -55,3 +55,7 @@
 ###Basic Styling
 
 * use bootstrap
+
+###Custom Management Command
+
+* generate out output HTML

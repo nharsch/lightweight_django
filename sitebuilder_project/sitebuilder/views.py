@@ -9,12 +9,12 @@ from django.utils._os import safe_join
 
 def get_page_or_404(name):
     """Return page content as a Django template or raise 404 error."""
-    print('page requested:', name)
+    # print('page requested:', name)
     try:
         # safe join returns normalized, absolute file path
         file_path = safe_join(settings.SITE_PAGES_DIRECTORY, name)
     except ValueError:
-        print('ValueError raised')
+        # print('ValueError raised')
         raise Http404('Page Not Found')
     else:
         if not os.path.exists(file_path):
