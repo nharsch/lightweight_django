@@ -62,4 +62,6 @@
 
 ###Building a Single Page
 
+* add optional arg to parser is defferent in Django 1.8
 
+###Hashing Our CSS and JS Files

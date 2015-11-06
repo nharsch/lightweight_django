@@ -22,6 +22,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """Request pages and build output."""
+        settings.DEBUG = False
         # if we have optional args
         if options.get('files'):
             # print(options['files'])
@@ -60,5 +61,3 @@ class Command(BaseCommand):
                 os.makedirs(output_dir)
             with open(os.path.join(output_dir, 'index.html'), 'wb') as f:
                 f.write(response.content)
-
-
