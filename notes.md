@@ -59,3 +59,7 @@
 ###Custom Management Command
 
 * generate out output HTML
+
+###Building a Single Page
+
+
