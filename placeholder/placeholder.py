@@ -12,6 +12,9 @@ DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 # default to random num if not set
 SECRET_KEY = os.environ.get('SECRET_KEY', 
                             '2i$6y88tc)29bpda6u-k6g9l_vs+z@y=xc274x4^$yu!m67-l@')
+
+BASE_DIR = os.path.dirname(__file__)
+
 # default to localhost if none set
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
@@ -26,13 +29,25 @@ settings.configure(
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ),
+    INSTALLED_APPS=(
+        'django.contrib.staticfiles', # add static file functionality
+    ),
+    TEMPLATE_DIRS=(
+        os.path.join(BASE_DIR, 'templates'),
+    ),
+    STATICFILES_DIRS=(
+        os.path.join(BASE_DIR, 'static'),
+    ),
+    STATIC_URL='/static/',
 )
 
 from django import forms
 from django.conf.urls import url
 from django.core.cache import cache
+from django.core.urlresolvers import reverse
 from django.core.wsgi import get_wsgi_application
 from django.http import HttpResponse, HttpResponseBadRequest
+from django.shortcuts import render
 from django.views.decorators.http import etag
 
 application = get_wsgi_application()
@@ -77,7 +92,10 @@ def placeholder(request, width, height):
         return HttpResponseBadRequest('Invalid Image Request')
 
 def index(request):
-    return HttpResponse('Hello World')
+    example = reverse('placeholder', kwargs={'width': 50, 'height':50})
+    context = {
+        'example': request.build_absolute_uri(example)}
+    return render(request, 'home.html', context)
 
 urlpatterns = (
     url(r'^image/(?P<width>[0-9]+)x(?P<height>[0-9]+)/$', placeholder,
