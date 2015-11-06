@@ -6,22 +6,42 @@
 
 ##Chapter 2 Stateless App
 
-* Why stateless?
+###Why stateless?
     * HTTP is a stateless protocol
     * managing state via cookies is messy and hard :(
-* Resuable Apps vs Composable Services    
+###Resuable Apps vs Composable Services    
     * Large applications with different components often have a fairly
       complex architectural style
     * better to break large websites into composable services
     * REST APIs are great cadidates for breaking out into separate Django projects
 
-* Placeholder image server
+###Placeholder image server
     * url cpature groups:
         * captured pattern groups are passed to the view as positional args
         * named groups are passed as keyword args
 
-* Caching
-    * server side or client side 
-    * etag decorator 
-        * will generate content on first request
-        * otherwise sends a 304 Not Modified response
+    * Caching
+        * server side or client side 
+        * etag decorator 
+            * will generate content on first request
+            * otherwise sends a 304 Not Modified response
+
+    * Creating the Home Page View
+        * need to serve static files
+
+##Chapter 3 Building a Static Site Generator 
+
+###Rapid protyping process.
+    1. Observer and analyze.
+        * Figure out your end uder goals
+    2. Build
+        * Create minimum viable product
+    3. Ship
+        * Create a seamless way to deploy changes
+    4. Adopt and educate
+        * Teach your users how to use the new features
+    5. Iterate and maintain
+        * Take your users' feedback and iterate back through
+        the process
+
+
