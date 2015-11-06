@@ -51,3 +51,7 @@
     the process
 
 ###Initial Project Layout
+
+###Basic Styling
+
+* use bootstrap
