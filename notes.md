@@ -10,6 +10,7 @@
 
 * HTTP is a stateless protocol
 * managing state via cookies is messy and hard :(
+
 ###Resuable Apps vs Composable Services    
 
 * Large applications with different components often have a fairly
