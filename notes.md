@@ -73,4 +73,4 @@
 
 ###Generating Dynamic Content
 
-
+* Using JSON as conext in page
