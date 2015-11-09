@@ -65,3 +65,8 @@
 * add optional arg to parser is defferent in Django 1.8
 
 ###Hashing Our CSS and JS Files
+
+###Compressing static files
+
+* using Django Compressor
+* we now have a cache folder in build/static

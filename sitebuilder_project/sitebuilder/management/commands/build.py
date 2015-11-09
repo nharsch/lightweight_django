@@ -23,6 +23,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         """Request pages and build output."""
         settings.DEBUG = False
+        settings.COMPRESS_ENABLED = True
         # if we have optional args
         if options.get('files'):
             # print(options['files'])
@@ -49,6 +50,7 @@ class Command(BaseCommand):
 
         call_command('collectstatic', interactive=False,
                      clear=True, verbosity=0)
+        call_command('compress', interactive=False, force=True)
         client = Client()
         # for HTML file in pages dir
         for page in pages:
