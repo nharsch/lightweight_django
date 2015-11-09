@@ -70,3 +70,7 @@
 
 * using Django Compressor
 * we now have a cache folder in build/static
+
+###Generating Dynamic Content
+
+
