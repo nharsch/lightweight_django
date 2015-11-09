@@ -73,7 +73,7 @@
 
 ###Generating Dynamic Content
 
-* Using JSON as conext in page
+* Using JSON as context in page
 
 ##Chapter 4 - Building a REST API
 
