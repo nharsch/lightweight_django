@@ -74,3 +74,7 @@
 ###Generating Dynamic Content
 
 * Using JSON as conext in page
+
+##Chapter 4 - Building a REST API
+
+* let's build a SCRUM style task board
