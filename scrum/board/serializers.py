@@ -7,12 +7,13 @@ from .models import Sprint, Task
 
 User = get_user_model()
 
+
 class SprintSerializer(serializers.ModelSerializer):
-    
+
     links = serializers.SerializerMethodField('get_links')
 
     class Meta:
-        model = SPrint
+        model = Sprint
         fields = ('id', 'name', 'descriptions', 'end', 'links',)
 
     def get_links(self, obj):
@@ -23,11 +24,15 @@ class SprintSerializer(serializers.ModelSerializer):
                             request=request),
         }
 
+
 class TaskSerializer(serializers.ModelSerializer):
 
     assigned = serializers.SlugRelatedField(
-        slug_field=User.USERNAME_FIELD, required=False)
-    status_dispaly = serializers.SerializerMethodField('get_status_display')
+        slug_field=User.USERNAME_FIELD,
+        required=False,
+        queryset=User.objects.all())
+    status_display = serializers.SerializerMethodField('get_status_display')
+
     links = serializers.SerializerMethodField('get_links')
 
     class Meta:
@@ -42,21 +47,23 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_links(self, obj):
         request = self.context['request']
-        return {
-            'self': reverse('task-detail', 
-                            kwwargs={'pk': obj.pk}, request=request),
+        links = {
+            'self': reverse('task-detail',
+                            kwargs={'pk': obj.pk},
+                            request=request),
             'sprint': None,
             'assigned': None
         }
         if obj.sprint_id:
             links['sprint'] = reverse('sprint-detail',
-                kwargs={'pk': obj.sprint_id}, 
+                kwargs={'pk': obj.sprint_id},
                 request=request)
         if obj.assigned:
             links['assigned'] = reverse('user-detail',
-                kwargs={User.USERNAME_FIELD: obj.assigned}, 
+                kwargs={User.USERNAME_FIELD: obj.assigned},
                 request=request)
         return links
+
 
 class UserSerializer(serializers.ModelSerializer):
     full_name = serializers.CharField(source='get_full_name', 
@@ -79,4 +86,4 @@ class UserSerializer(serializers.ModelSerializer):
                             kwargs={User.USERNAME_FIELD: username}, 
                             request=request),
         }
-    
+

@@ -115,4 +115,8 @@ Seperate resourse data from metadata
 
 ## Testing Out the API
 
+### Using the Browsable API
+
+
+
 
