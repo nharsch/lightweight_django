@@ -1,10 +1,10 @@
 
-##Chapter 1
+#Chapter 1
 
 * You can do a one file app with Django
 * you can create app templates for Django
 
-##Chapter 2 Stateless App
+#Chapter 2 Stateless App
 
 ###Why stateless?
 
@@ -34,9 +34,9 @@
 * Creating the Home Page View
     * need to serve static files
 
-##Chapter 3 Building a Static Site Generator 
+#Chapter 3 Building a Static Site Generator 
 
-###Rapid protyping process.
+##Rapid protyping process.
 
 1. Observer and analyze.
     * Figure out your end uder goals
@@ -75,6 +75,29 @@
 
 * Using JSON as context in page
 
-##Chapter 4 - Building a REST API
+# Chapter 4 - Building a REST API
 
 * let's build a SCRUM style task board
+
+## Designing the API
+
+the url strucuture should look like this:
+    /api/
+        /sprints/
+            /<id>/
+        /tasks/
+            /<id>/
+        /users/
+            /<username>
+
+### Sprint Endpoints
+
+The `ModelViewSet` provides scaffolding for CRUD operations.
+Auth, permissions, pagination, and filtering are controlled
+by the `REST_FRAMEWORK` settings dictionary if not set on the view
+
+### Task and User Endpoints
+
+### Connecting to the Router
+
+connect ViewSets to the URL routing system
