@@ -117,6 +117,9 @@ Seperate resourse data from metadata
 
 ### Using the Browsable API
 
+## Filters
+
+basic filtering can build filter set based on the model definition
 
 
 
