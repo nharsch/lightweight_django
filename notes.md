@@ -121,5 +121,5 @@ Seperate resourse data from metadata
 
 basic filtering can build filter set based on the model definition
 
-
+Validations usually handled by forms must now be handled by serializers
 

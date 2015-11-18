@@ -19,9 +19,12 @@ class SprintSerializer(serializers.ModelSerializer):
     def get_links(self, obj):
         request = self.context['request']
         return {
-            'self': reverse('sprint-detail', 
-                            kwargs={'pk':obj.pk}, 
+            'self': reverse('sprint-detail',
+                            kwargs={'pk':obj.pk},
                             request=request),
+            # get specific object link by passing into filter
+            'tasks': reverse('task-list',
+                             request=request) + '?sprint={}'.format(obj.pk)
         }
 
 
@@ -85,5 +88,8 @@ class UserSerializer(serializers.ModelSerializer):
             'self': reverse('user-detail',
                             kwargs={User.USERNAME_FIELD: username}, 
                             request=request),
+            # hit tasks enpoint and filter for all tasks assigned to user
+            'tasks': '{}?assigned={}'.format(
+                reverse('task-list', request=request), username)
         }
 
