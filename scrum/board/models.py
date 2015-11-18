@@ -15,7 +15,7 @@ class Sprint(models.Model):
 
 class Task(models.Model):
     """Unit of work to be done for the sprint."""
-    
+
     STATUS_TODO = 1
     STATUS_IN_PROGRESS = 2
     STATUS_TESTING = 3
@@ -31,7 +31,8 @@ class Task(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, default='')
     sprint = models.ForeignKey(Sprint, blank=True, null=True)
-    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=STATUS_TODO)
+    status = models.SmallIntegerField(choices=STATUS_CHOICES, 
+                                      default=STATUS_TODO)
     order = models.SmallIntegerField(default=0)
     assigned = models.ForeignKey(settings.AUTH_USER_MODEL, 
                                  null=True, 

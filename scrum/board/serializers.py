@@ -19,7 +19,7 @@ class SprintSerializer(serializers.ModelSerializer):
     def get_links(self, obj):
         request = self.context['request']
         return {
-            'self': reverse('sprint-deteail', 
+            'self': reverse('sprint-detail', 
                             kwargs={'pk':obj.pk}, 
                             request=request),
         }
